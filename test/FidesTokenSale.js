@@ -80,7 +80,7 @@ contract('FidesTokenSale', (accounts) => {
     }).then((receipt) => {
       return tokenInstance.balanceOf(admin);
     }).then((balance) => {
-      assert.equal(balance.toNumber(), 14000000, 'returns all unsold tokens to admin');
+      assert.equal(balance.toNumber(), 21999990, 'returns all unsold tokens to admin');
       // assert.equal(balance.toNumber(), 99999990, 'returns all unsold tokens to admin');
       return web3.eth.getBalance(tokenSaleInstance.address);
     }).then((balance) => {

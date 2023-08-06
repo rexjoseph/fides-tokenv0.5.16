@@ -117,7 +117,4 @@ contract('FidesToken', function(accounts) {
         assert.equal(allowance.toNumber(), 0, 'deducts the amount from the allowance');
       });
   });
-
-
-
 })

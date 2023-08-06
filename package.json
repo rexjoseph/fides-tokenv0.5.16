@@ -1,0 +1,17 @@
+{
+  "name": "fides-token-sale",
+  "version": "1.0.0",
+  "description": "Fides Token Sale ICO",
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "lite-server"
+  },
+  "author": "Rex",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}

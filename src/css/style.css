@@ -1,0 +1,26 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.container {
+  max-width: 1120px;
+  width: 100%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+h1 {
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.loader {
+  text-align: center;
+}
+
+.content {
+  text-align: center;
+}

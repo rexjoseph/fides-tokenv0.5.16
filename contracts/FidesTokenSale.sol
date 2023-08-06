@@ -23,10 +23,17 @@ contract FidesTokenSale {
   }
 
   function buyTokens(uint256 _numberOfTokens) public payable {
-    require(msg.value == multiply(_numberOfTokens, tokenPrice));
-    // come back to this :)
+    /* require(msg.value == multiply(_numberOfTokens, tokenPrice));
     require(tokenContract.balanceOf(tokenAddress) >= _numberOfTokens);
     require(tokenContract.transfer(msg.sender, _numberOfTokens));
+    tokensSold += _numberOfTokens;
+    emit Sell(msg.sender, _numberOfTokens); */
+    uint256 requiredAmount = multiply(_numberOfTokens, tokenPrice);
+    require(msg.value == requiredAmount, "Insufficient ether sent for the number of tokens");
+    // console.log("Token Address:", tokenAddress);
+    require(tokenContract.balanceOf(address(this)) >= _numberOfTokens, "Not enough tokens available for purchase");
+    require(tokenContract.transfer(msg.sender, _numberOfTokens), "Token transfer failed");
+
     tokensSold += _numberOfTokens;
 
     // emit sell event
@@ -37,9 +44,18 @@ contract FidesTokenSale {
   function endSale() public {
     // require admin
     require(msg.sender == admin);
-    // transfer remaining tokens back to admin
+    
+    
+    /* // transfer remaining tokens back to admin
     require(tokenContract.transfer(admin, tokenContract.balanceOf(tokenAddress)));
     // t-minus transfer back to admin address
+    admin.transfer(address(this).balance); */
+
+    // Transfer remaining tokens back to admin
+    uint256 unsoldTokens = tokenContract.balanceOf(address(this));
+    require(tokenContract.transfer(admin, unsoldTokens));
+    
+    // Transfer remaining ether balance back to admin
     admin.transfer(address(this).balance);
   }
 }
