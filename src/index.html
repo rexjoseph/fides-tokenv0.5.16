@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" sizes="192x192" href="/images/curvelogo.png" />
+  <link rel="shortcut icon" sizes="76x76" href="/images/curvelogo.png" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fides</title>
@@ -11,39 +13,153 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="container">
-    <div class="row">
-      <h1>Fides Token ICO Sale</h1>
-      <hr />
-      <br />
+  <nav>
+    <div class="container">
+      <div class="nav-grid">
+        <div class="nav-grid-col">
+          <a class="nav-logo">
+            FIDES
+          </a>
+        </div>
+        <div class="nav-grid-col">
+          <button id="connectButton" class="nav-connect-btn">
+            Connect Wallet
+          </button>
+        </div>
+      </div>
     </div>
+  </nav>
+  <div class="container">
     <div id="loader" class="loader">
       <p>Loading...</p>
     </div>
-    <div id="content" class="content" style="display: none;">
-      <p>
-        Introducing Fides Token (FIDES). Token price is <span class="token-price"></span> Ether. You currently have <span class="fides-balance"></span>&nbsp;FIDES.
-      </p>
-      <br />
-      <form onsubmit="App.buyTokens(); return false;">
-        <div class="form-group">
-          <div class="input-group">
-            <input type="number" id="numberOfTokens" name="number" value="1" min="1" pattern="[0-9]"/>
+    <div id="content" class="content-flex content" style="display: none;">
+      <div class="content-3x">
+        <div class="black-section">
+          <div class="content-logo">
+            <img src="/images/curvelogo.png" alt="bored-ape" />
           </div>
-          <div class="">
-            <button type="submit" class="button">Buy Tokens</button>
+          <div class="content-info">
+            <h4 class="token-name-h4">Fides Token</h4>
+            <div class="social-div">
+              <img src="/images/curvelogo.png" alt="" srcset="" />
+              <div>
+                <p class="normal-p">Fides Foundation</p>
+                <p class="dark-grey">@Fideshq</p>
+              </div>
+            </div>
+            <div class="price-flex">
+              <div>
+                <p class="grey-p">Price per FIDES</p>
+                <div class="big-p flex">
+                  <img src="/images/eth-logo.png" />
+                  <span class="token-price"></span>
+                </div>
+              </div>
+              <div>
+                <p class="grey-p">Starts in</p>
+                <p class="big-p">02h 32m 44s</p>
+              </div>
+            </div>
+            <div class="price-flex">
+              <div>
+                <p class="grey-p">Token balance</p>
+                <p class="light-p"><span class="fides-balance"></span> FIDES</p>
+              </div>
+              <div>
+                <p class="grey-p">Connected address</p>
+                <p id="accountAddress"></p>
+              </div>
+              <div>
+                <p class="grey-p">Tokens sold</p>
+                <p class="light-p"><span class="tokens-sold"></span> / <span class="tokens-available"></span></p>
+              </div>
+            </div>
+            <form onsubmit="App.buyTokens(); return false;">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="number" id="numberOfTokens" name="number" value="1" min="1" pattern="[0-9]"/>
+                </div>
+                <div class="">
+                  <button type="submit" class="button">Buy Tokens</button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
-      </form>
-      <br />
-      <p>
-        <span class="tokens-sold"></span> / <span class="tokens-available"></span> tokens sold
-      </p>
-      <hr />
-      <p id="accountAddress"></p>
-      <button id="connectButton" class="button">Connect Account</button>
+      </div>
+      <div class="content-1x">
+        <h2>Recent Activity</h2>
+        <ul class="event-list">
+          <!-- Events will be dynamically added here -->
+        </ul>
+      </div>
     </div>
   </div>
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-div">
+          <h2>FIDES</h2>
+        </div>
+        <div class="social-div">
+          <a href="https://twitter.com/Fideshq" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 13 11" xmlns="http://www.w3.org/2000/svg"><path d="M10.851 3.136c.008.104.008.207.008.31 0 3.149-2.494 6.777-7.053 6.777A7.214 7.214 0 0 1 0 9.153c.2.023.391.03.599.03a5.094 5.094 0 0 0 3.077-1.018c-1.09-.022-2.003-.708-2.318-1.651.154.022.307.036.468.036.223 0 .446-.029.653-.08C1.343 6.247.49 5.29.49 4.131v-.03c.33.177.714.288 1.12.303A2.357 2.357 0 0 1 .507 2.42c0-.442.123-.848.338-1.202C2.064 2.664 3.9 3.61 5.955 3.712a2.587 2.587 0 0 1-.061-.546c0-1.313 1.105-2.382 2.479-2.382a2.52 2.52 0 0 1 1.81.752 5.004 5.004 0 0 0 1.574-.575 2.395 2.395 0 0 1-1.09 1.313 5.13 5.13 0 0 0 1.428-.369 5.22 5.22 0 0 1-1.244 1.231Z"></path></svg>
+          </a>
+          <a href="http://t.me/Fideshq" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 12 11" xmlns="http://www.w3.org/2000/svg"><path d="m11.823 1.646-1.79 8.08c-.134.571-.487.713-.987.444L6.32 8.246 5.005 9.458c-.146.14-.268.256-.548.256l.196-2.659 5.052-4.372c.22-.188-.047-.292-.341-.104L3.117 6.345.428 5.54c-.585-.175-.595-.56.122-.829L11.068.83c.487-.175.914.104.755.816Z"></path></svg>
+          </a>
+          <a href="http://github.com/fideshq" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M.8 5.574C.8 2.637 3.129.407 6.173.407c3.045 0 5.514 2.23 5.514 5.167a5.275 5.275 0 0 1-3.683 5.06c-.279.05-.38-.118-.38-.255 0-.058 0-.192.002-.373.002-.366.005-.92.005-1.398 0-.497-.172-.815-.374-.982 1.227-.134 2.52-.297 2.52-2.34 0-.58-.215-.873-.566-1.247.057-.138.244-.703-.057-1.438-.459-.14-1.515.572-1.515.572a5.334 5.334 0 0 0-2.756 0s-1.056-.71-1.515-.572c-.3.733-.114 1.3-.057 1.438-.351.372-.518.665-.518 1.247 0 2.037 1.238 2.208 2.465 2.34-.158.14-.3.375-.351.713-.314.14-1.12.375-1.6-.442-.301-.504-.848-.547-.848-.547-.537-.006-.035.327-.035.327.36.158.61.775.61.775.323.948 1.86.63 1.86.63 0 .289.002.694.004.98l.002.32c0 .138-.099.306-.38.257C2.332 9.932.8 7.922.8 5.574ZM3.853 8.66c-.066-.013-.11-.061-.094-.104.015-.042.079-.063.136-.048.066.019.107.067.094.11-.013.042-.079.063-.136.042Zm.474.068c.064 0 .114-.034.114-.076 0-.049-.057-.083-.123-.077-.063 0-.114.034-.114.077 0 .048.05.082.123.076Zm.402-.208c-.064.015-.108.055-.101.104.007.043.064.07.13.055.063-.015.107-.055.1-.097-.006-.04-.065-.068-.13-.062Zm-1.796-.81c-.028.02-.021.07.016.11.035.033.085.048.114.02.029-.02.022-.07-.015-.11-.035-.033-.086-.048-.115-.02Zm-.186-.09c-.044-.02-.066-.055-.05-.082.015-.021.05-.028.094-.015.044.021.066.055.05.083-.015.03-.059.036-.094.014Zm.66.672c-.035.027-.021.09.03.131.05.049.113.055.142.021.028-.027.015-.09-.029-.131-.048-.049-.114-.055-.142-.021Zm-.25-.187c-.035-.048-.035-.103 0-.125.035-.027.093-.006.123.043.035.049.035.104 0 .131-.028.021-.087 0-.123-.049Z"></path></svg>
+          </a>
+          <a href="http://discord.gg/fideshq" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.82 4.26a10.14 10.14 0 0 0-.53 1.1 14.66 14.66 0 0 0-4.58 0 10.14 10.14 0 0 0-.53-1.1 16 16 0 0 0-4.13 1.3 17.33 17.33 0 0 0-3 11.59 16.6 16.6 0 0 0 5.07 2.59A12.89 12.89 0 0 0 8.23 18a9.65 9.65 0 0 1-1.71-.83 3.39 3.39 0 0 0 .42-.33 11.66 11.66 0 0 0 10.12 0q.21.18.42.33a10.84 10.84 0 0 1-1.71.84 12.41 12.41 0 0 0 1.08 1.78 16.44 16.44 0 0 0 5.06-2.59 17.22 17.22 0 0 0-3-11.59 16.09 16.09 0 0 0-4.09-1.35zM8.68 14.81a1.94 1.94 0 0 1-1.8-2 1.93 1.93 0 0 1 1.8-2 1.93 1.93 0 0 1 1.8 2 1.93 1.93 0 0 1-1.8 2zm6.64 0a1.94 1.94 0 0 1-1.8-2 1.93 1.93 0 0 1 1.8-2 1.92 1.92 0 0 1 1.8 2 1.92 1.92 0 0 1-1.8 2z"></path></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-linksdiv">
+       <div>
+        <header>Community</header>
+        <ul>
+          <li>
+            <a href="http://twitter.com/Fideshq" target="_blank" rel="noopener noreferrer">Twitter</a>
+          </li>
+          <li>
+            <a href="http://t.me/Fideshq" target="_blank" rel="noopener noreferrer">Telegram</a>
+          </li>
+          <li>
+            <a href="http://discord.gg/fideshq" target="_blank" rel="noopener noreferrer">Discord</a>
+          </li>
+          <li>
+            <a href="http://youtube.com/c/Fideshq" target="_blank" rel="noopener noreferrer">YouTube</a>
+          </li>
+        </ul>
+       </div> 
+      </div>
+      <div class="footer-linksdiv">
+        <div>
+         <header>Resources</header>
+         <ul>
+           <li>
+             <a href="http://github.com/fideshq" target="_blank" rel="noopener noreferrer">Contracts</a>
+           </li>
+           <li>
+             <a href="#" target="_blank" rel="noopener noreferrer">Whitepaper</a>
+           </li>
+           <li>
+             <a href="http://github.com/fideshq" target="_blank" rel="noopener noreferrer">Github</a>
+           </li>
+           <li>
+             <a href="#" target="_blank" rel="noopener noreferrer">Donate</a>
+           </li>
+           <li>
+            <a href="#" target="_blank" rel="noopener noreferrer">Exploits</a>
+          </li>
+         </ul>
+        </div> 
+       </div>
+    </div>
+  </footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="js/web3.min.js"></script>
   <script src="js/truffle-contract.min.js"></script>

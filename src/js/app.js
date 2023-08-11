@@ -56,16 +56,80 @@ App = {
 
   // listen for contract emitted events
   listenForEvents: function() {
+    let events = []; // Array to store the events
+  
     App.contracts.FidesTokenSale.deployed().then(function(instance) {
-      instance.Sell({},{
+      instance.Sell({}, {
         fromBlock: 0,
         toBlock: 'latest',
-      }).watch(function(err, event) {
-        console.log("event triggered", event);
-        App.render();
-      })
-    })
+      }).watch(function(error, event) {
+        if (error) {
+          console.error("Error listening for events:", error);
+        } else {
+          console.log("event triggered", event);
+  
+          // Get the amount bought from the event
+          let amountBought = event.args._amount.toNumber();
+          let tokenBuyer = event.args._buyer.substring(0, 5) + "..." + event.args._buyer.substring(event.args._buyer.length - 4);
+
+          /* const formattedAddress = account.substring(0, 5) + "..." + account.substring(account.length - 4);
+        $('#accountAddress').html(formattedAddress); */
+  
+          // Create the event item container (flex-style <li>)
+          let eventList = $('.event-list');
+          let eventItem = document.createElement('li');
+          eventItem.classList.add('event-item');
+
+          let iconDiv = document.createElement('div');
+          iconDiv.classList.add('iconDiv');
+          eventItem.appendChild(iconDiv)
+  
+          // Create the icon element
+          let icon = document.createElement('img');
+          icon.src = '/images/eth-logo.png';
+          icon.alt= 'logo';
+          iconDiv.appendChild(icon);
+  
+          let contentContainer = document.createElement('div');
+          contentContainer.classList.add('content-container');
+  
+          // Create the address paragraph
+          let addressPara = document.createElement('p');
+          addressPara.textContent = "Address: " + tokenBuyer;
+          contentContainer.appendChild(addressPara);
+  
+          // Create the amount paragraph
+          let amountPara = document.createElement('p');
+          amountPara.classList.add("amountPara");
+          amountPara.textContent = "purchased " + amountBought + " FIDES";
+          contentContainer.appendChild(amountPara);
+  
+          // Add the content container to the event item
+          eventItem.appendChild(contentContainer);
+  
+          events.unshift(eventItem); // Add the new event item to the beginning of the events array
+  
+          // Update the event list with the recent events (only show the first 5)
+          eventList.empty(); // Clear the event list before adding the updated events
+          let numEventsToShow = Math.min(events.length, 5);
+          for (let i = 0; i < numEventsToShow; i++) {
+            eventList.append(events[i]);
+          }
+  
+          if (events.length > 5) {
+            let showMoreLink = document.createElement('a');
+            showMoreLink.href = '#'; // Add the link target if needed
+            showMoreLink.textContent = 'Show More';
+            showMoreLink.classList.add('show-more-link');
+            eventList.append(showMoreLink);
+          }
+  
+          App.render();
+        }
+      });
+    });
   },
+  
 
   // let's render something on the page
   render: function() {
@@ -85,7 +149,8 @@ App = {
       if (err === null) {
         console.log("account", account);
         App.account = account;
-        $('#accountAddress').html("Your account: " + account);
+        const formattedAddress = account.substring(0, 5) + "..." + account.substring(account.length - 4);
+        $('#accountAddress').html(formattedAddress);
         // $('#connectButton').hide(); // Hide the connect button when the account is connected
       } else {
         console.error("Error getting account:", err);
@@ -150,7 +215,8 @@ App = {
         var account = accounts[0];
         console.log("Connected account:", account);
         App.account = account;
-        $('#accountAddress').html("Your account: " + account);
+        const formattedAddress = account.substring(0, 5) + "..." + account.substring(account.length - 4);
+        $('#accountAddress').html(formattedAddress);
         // $('#connectButton').hide(); // Hide the connect button after successful connection
       } else {
         console.log("No accounts found in MetaMask.");
@@ -173,7 +239,8 @@ $(function () {
         var account = accounts[0];
         console.log("Connected account:", account);
         App.account = account;
-        $('#accountAddress').html("Your account: " + account);
+        const formattedAddress = account.substring(0, 5) + "..." + account.substring(account.length - 4);
+        $('#accountAddress').html(formattedAddress);
         $('#connectButton').hide(); // Hide the connect button after successful connection
       }).catch(function(error) {
         console.error("Error connecting account:", error);
